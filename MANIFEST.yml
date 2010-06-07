@@ -1,0 +1,23 @@
+package: layered-window
+version: 1.0.1
+
+sources:
+  include:
+    - site-lisp/layered-window/**/*.l
+  exclude:
+    - site-lisp/*-scratch.l
+    - site-lisp/**/tests/*.l
+    - site-lisp/**/examples/*.l
+
+document:
+  - site-lisp/layered-window/docs/README.rd
+
+files:
+  include:
+    - site-lisp/**/*.l
+    - site-lisp/**/*.lc
+    - site-lisp/**/docs/**/*
+    - site-lisp/**/docs/**/*.*
+  exclude:
+    - site-lisp/*-scratch.l
+    - site-lisp/**/tests/*.*

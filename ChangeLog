@@ -1,0 +1,121 @@
+2007-06-02  MIYAMUKO Katsuyuki
+
+	* layered-window 1.0.1 リリース!
+
+	* version は api/version.l でまとめて定義。
+
+	* - バージョンを 1.0.1 に更新
+
+	* - provide が間違ってたのを修正。
+
+	* - util.l を削除。代わりに types.l を追加。
+	  - 必要なもののみ import するようにしたので define-xxx-if-not-defined を削除。
+
+	* add tests
+
+	* command.l を funciton.l と hook.l に分割。
+
+	* - package.l を分割定義。
+	  - :winapi を use するのをやめて必要なシンボルのみ import するようにした。
+
+2007-05-27  MIYAMUKO Katsuyuki
+
+	* layered-window 1.0.0 リリース!
+
+	* - (set-layered-window-attributes/color): nil を返すようにした。
+	  - (set-layered-window-attributes/alpha): ditto
+	  - (set-window-ex-layered): ditto.
+
+	* - (set-layered-window-attributes): WS_EX_LAYERED を設定してから SetLayeredWindowAttributes
+	    するまでに エラーになった場合は WS_EX_LAYERED を落とすようにした。
+	    フラグを落とさないと描画がとまってしまう。
+
+	* - (set-layered-window-attributes): export しないようにした。
+	  - (get-layered-window-attributes): ditto.
+
+2007-05-26  MIYAMUKO Katsuyuki
+
+	* add MANIFEST.yml
+
+	* 互換層は layered-window.l で require するようにした。
+
+	* ライセンス変更を NEWS に追加
+
+	* (layered-window-version): layered-window のバージョン
+	  (layered-window-api-version): layered-window.api のバージョン。
+
+	* - require を整理
+
+	* - layered-window 0.3 互換 API の定義
+
+	* - (layered-window-get-opacity): alpha が non-nil の場合だけ alpha->opacity すべき。
+	  - (layered-window-set-transparency-color):  値が不正なら plain-error するようにした。
+	  - (layered-window-set-alpha):ditto.
+
+	* - (parse-bgr): 16 進の解析がバグっていたのを修正
+	  - (parse-bgr): #FFFFFF に対応。
+
+	* - get-layered-window-attributes/colorkey => get-layered-window-attributes/color
+	  - (set-window-long): SetWindowLong したけどエラーになった場合があった気がするので
+	    GetLastError のチェックをやめた。
+	    ここでチェックしなくても SetLayeredWindowAttributes でエラーになるのでこれでよい。
+
+	* - api.l を require
+
+	* - GetLayeredWindowAttributes, RedrawWindow が定義されていない場合のみ定義。
+	  - api.l で定義されているものをコメントに書いた
+
+	* - GetLastError が定義されていない場合のみ定義。
+
+	* - (define-dll-entry-if-not-defined): not fboundp なら *define-dll-entry するマクロ.
+	  - (define-if-not-defined): not boundp なら *define するマクロ.
+
+	* - make-xxx-chunk, unpack-xxx を export
+
+	* - layered-window.l のファイル・パッケージを分割。
+
+2006-01-18  MIYAMUKO Katsuyuki
+
+	* (parse-bgr): 数値指定に対応。
+
+2005-11-25  MIYAMUKO Katsuyuki
+
+	* (layered-window パッケージ): 全体のつくりを見直してきれいにした。
+	低レベルな部分は lwapi パッケージに入れた。
+
+	* (layered-window-set-transparency-color-bgr): 文字列で透過色を設定
+	できるようにした。
+
+	* (layered-window-redraw-window): 背景ずれ対策に RedrawWindow を
+	呼び出して見る。
+
+	* (*layered-window-hook*): 設定変更ごとに呼ばれるフックを追加。
+
+	* (layered-window-get-opacity, layered-window-get-alpha): 透過率を
+	取得する API を追加。
+
+	* (layered-window-get-transparency-color): 透過色を取得する API
+	を追加。
+
+2004-08-09  MIYAMUKO Katsuyuki
+
+	* サイト移転に伴うこまごまとした修正
+
+2003-08-24  MIYAMUKO Katsuyuki
+
+	* 透明化をトグルするメニューをウィンドウメニューに追加。
+	  ((<URL:http://www3.ocn.ne.jp/~han/200306.html#03_t4>))より。
+
+2003-08-12  MIYAMUKO Katsuyuki
+
+	* ni-autoload 用ファイルをやっと追加。
+
+2003-05-30  MIYAMUKO Katsuyuki
+
+	* 指定色の透過 (layered-window-set-transparency-color)
+
+	* 関数・変数名変更 (transparency -> opacity)
+
+2003-05-29  MIYAMUKO Katsuyuki
+
+	* 初期リリース
