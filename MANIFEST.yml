@@ -5,7 +5,6 @@ sources:
   include:
     - site-lisp/layered-window/**/*.l
   exclude:
-    - site-lisp/*-scratch.l
     - site-lisp/**/tests/*.l
     - site-lisp/**/examples/*.l
 
@@ -19,5 +18,4 @@ files:
     - site-lisp/**/docs/**/*
     - site-lisp/**/docs/**/*.*
   exclude:
-    - site-lisp/*-scratch.l
     - site-lisp/**/tests/*.*
