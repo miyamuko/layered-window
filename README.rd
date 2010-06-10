@@ -1,4 +1,4 @@
-= layered-window - �E�B���h�E�𔼓������E���ߐF�̐ݒ�
+= layered-window - ウィンドウを半透明化・透過色の設定
 
 * Author:  MIYAMUKO Katsuyuki ((<URL:mailto:miyamuko@gmail.com>))
 * URL: ((<URL:http://miyamuko.s56.xrea.com/xyzzy/layered-window/intro.htm>))
@@ -7,7 +7,7 @@
 
 == NAME
 
-layered-window - �E�B���h�E�𔼓������E���ߐF�̐ݒ�
+layered-window - ウィンドウを半透明化・透過色の設定
 
 
 == SYNOPSIS
@@ -33,71 +33,71 @@ layered-window - �E�B���h�E�𔼓������E���ߐF�̐ݒ�
 
 == DESCRIPTION
 
-layered-window �͈ȉ��̋@�\��񋟂��܂��B
+layered-window は以下の機能を提供します。
 
-* �C�ӂ̃E�B���h�E�̔�������
-* �C�ӂ̃E�B���h�E�̓��ߐF�ݒ�
+* 任意のウィンドウの半透明化
+* 任意のウィンドウの透過色設定
 
-�܂��Axyzzy �̃E�B���h�E�̔��������E���ߐF�ݒ�ɓ������� �C���^�[�t�F�C�X
-(API�A���j���[�A�R�}���h) ��񋟂��܂��B
+また、xyzzy のウィンドウの半透明化・透過色設定に特化した インターフェイス
+(API、メニュー、コマンド) を提供します。
 
-xyzzy �ȊO�̃E�B���h�E�̔��������E���ߐF�ݒ���������ꍇ�� layered-window.api �p�b�P�[�W���̊֐��𗘗p���Ă��������B
+xyzzy 以外のウィンドウの半透明化・透過色設定をしたい場合は layered-window.api パッケージ内の関数を利用してください。
 
 
 == INSTALL
 
-((<NetInstaller|URL:http://www7a.biglobe.ne.jp/~hat/xyzzy/ni.html>)) �ŃC���X�g�[�������ꍇ�� 4 �ȍ~���A
-NetInstaller + (({ni-autoload})) ���g���Ă���l�� 5 �ȍ~�� OK �ł��B
+((<NetInstaller|URL:http://www7a.biglobe.ne.jp/~hat/xyzzy/ni.html>)) でインストールした場合は 4 以降を、
+NetInstaller + (({ni-autoload})) を使っている人は 5 以降で OK です。
 
-(1) api.l ���K�v�Ȃ̂ŃC���X�g�[�����܂� (NetInstaller �ł��C���X�g�[���ł��܂�)�B
+(1) api.l が必要なのでインストールします (NetInstaller でもインストールできます)。
 
     ((<URL:http://xyzzy.s53.xrea.com/wiki/index.php?%B3%C8%C4%A5lisp%2Fwinapi>))
 
-(2) �A�[�J�C�u���_�E�����[�h���܂��B
+(2) アーカイブをダウンロードします。
 
     ((<URL:http://miyamuko.s56.xrea.com/xyzzy/archives/layered-window.zip>))
 
-(3) �A�[�J�C�u��W�J���āA$XYZZY/site-lisp �z���Ƀt�@�C�����R�s�[���܂��B
+(3) アーカイブを展開して、$XYZZY/site-lisp 配下にファイルをコピーします。
 
-(4) ~/.xyzzy �܂��� $XYZZY/site-lisp/siteinit.l �Ɉȉ��̃R�[�h��ǉ����܂��B
+(4) ~/.xyzzy または $XYZZY/site-lisp/siteinit.l に以下のコードを追加します。
 
         ;; layered-window
         (require "layered-window")
 
-(5) �ݒ�𔽉f�����邽�� xyzzy ���ċN�����Ă��������B
+(5) 設定を反映させるため xyzzy を再起動してください。
 
-    ��siteinit.l �ɋL�q�����ꍇ�ɂ͍ă_���v���K�v�ł��B
+    ※siteinit.l に記述した場合には再ダンプが必要です。
 
-(6) �E�B���h�E���j���[�������� �Ŕ������ɂł��܂��B
+(6) ウィンドウメニュー→透明化 で半透明にできます。
 
 
 == MODULE
 
 === PACKAGE
 
-layered-window �͈ȉ��̃p�b�P�[�W���`���Ă��܂��B
+layered-window は以下のパッケージを定義しています。
 
 * layered-window.api
 
-  �C�ӂ̃E�B���h�E�̔��������E���ߐF�ݒ�������Ȃ����C�u�����B
+  任意のウィンドウの半透明化・透過色設定をおこなうライブラリ。
 
 * layered-window.editor
 
-  xyzzy �̃E�B���h�E�ɓ��������R�}���h�A���j���[�A�t�b�N�̒�`�B
+  xyzzy のウィンドウに特化したコマンド、メニュー、フックの定義。
 
-  user, editor �p�b�P�[�W���� use-package ����悤�ɂ��Ă��܂��B
+  user, editor パッケージから use-package するようにしています。
 
 * layered-window.ffi
 
-  winapi ��`�B
+  winapi 定義。
 
 
 === EXPORT
 
-layered-window �͈ȉ��̊֐��� export ���Ă��܂�
-(layered-window.ffi �͓����p�b�P�[�W�Ȃ̂ŏȗ�)�B
+layered-window は以下の関数を export しています
+(layered-window.ffi は内部パッケージなので省略)。
 
-==== layered-window.api �p�b�P�[�W
+==== layered-window.api パッケージ
 
   * ((<"set-layered-window-attributes/alpha"|URL:#label-24 >))
   * ((<"set-layered-window-attributes/color"|URL:#label-25 >))
@@ -117,7 +117,7 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
   * ((< layered-window-api-version >))
 
 
-==== layered-window.editor �p�b�P�[�W
+==== layered-window.editor パッケージ
 
   * ((< *layered-window-default-opacity* >))
   * ((< *layered-window-hook* >))
@@ -140,26 +140,26 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
 
 === VARIABLE
 
-==== layered-window.editor �p�b�P�[�W
+==== layered-window.editor パッケージ
 
 --- *layered-window-default-opacity*
-    toggle-layered-window �E�B���h�E�̓����E�s������
-    �؂�ւ���Ƃ��̕s�����x���w�肵�܂��B
+    toggle-layered-window ウィンドウの透明・不透明を
+    切り替えるときの不透明度を指定します。
 
-    0 ���� 100 �܂ł̒l���w��\�ł��B
-    0 �͊��S�ȓ����A100 �͊��S�ȕs�������Ӗ����܂��B
+    0 から 100 までの値が指定可能です。
+    0 は完全な透明、100 は完全な不透明を意味します。
 
-    �f�t�H���g�� 80 % �ł��B
+    デフォルトは 80 % です。
 
-      ;; �f�t�H���g�̕s�����x�� 95% �ɐݒ�
+      ;; デフォルトの不透明度を 95% に設定
       (setf *layered-window-default-opacity* 95)
 
 --- *layered-window-hook*
 
-    xyzzy �̃E�B���h�E�̓����x�A���ߐF�ݒ��ύX���邽�тɎ��s�����t�b�N�ł��B
-    �t�b�N�̈����� xyzzy �̃E�B���h�E�n���h���ł��B
+    xyzzy のウィンドウの透明度、透過色設定を変更するたびに実行されるフックです。
+    フックの引数は xyzzy のウィンドウハンドルです。
 
-    �f�t�H���g�ł͉�ʂ̍ĕ`��֐� (layered-window-refresh) ���o�^����Ă��܂��B
+    デフォルトでは画面の再描画関数 (layered-window-refresh) が登録されています。
 
         (add-hook '*layered-window-hook* #'(lambda (hwnd)
                                              (msgbox "hello layered-window")))
@@ -167,21 +167,21 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
 
 === COMMAND
 
-==== layered-window.editor �p�b�P�[�W
+==== layered-window.editor パッケージ
 
 --- layered-window-set-opacity
 
     call-seq:
       (layered-window-set-opacity opacity) => nil
 
-    �s�����x���w�肵�E�B���h�E�𓧉߂��܂��B
+    不透明度を指定しウィンドウを透過します。
 
-    �����ɂ͕s�����x���p�[�Z���e�[�W�Ŏw�肵�܂��B
-    0 ���� 100 �܂ł̒l���w��\�ł���A
-    0 �͊��S�ȓ����A100 �͊��S�ȕs�������Ӗ����܂��B
+    引数には不透明度をパーセンテージで指定します。
+    0 から 100 までの値が指定可能であり、
+    0 は完全な透明、100 は完全な不透明を意味します。
 
     ex)
-        ;; 70% �̃A���t�@�l�œ�����
+        ;; 70% のアルファ値で透明化
         (layered-window-set-opacity 70)
 
 --- layered-window-set-alpha
@@ -189,14 +189,14 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (layered-window-set-alpha alpha) => nil
 
-    �A���t�@�l���w�肵�E�B���h�E�𓧉߂��܂��B
+    アルファ値を指定しウィンドウを透過します。
 
-    �����ɂ̓A���t�@�l�����Ă��܂��B
-    0 ���� 255 �܂ł̒l���w��\�ł���A
-    0 �͊��S�ȓ����A255 �͊��S�ȕs�������Ӗ����܂��B
+    引数にはアルファ値をしています。
+    0 から 255 までの値が指定可能であり、
+    0 は完全な透明、255 は完全な不透明を意味します。
 
     ex)
-        ;; 50�� ���炢�œ�����
+        ;; 50％ ぐらいで透明化
         (layered-window-set-alpha 127)
 
 --- layered-window-set-transparency-color
@@ -204,13 +204,13 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (layered-window-set-transparency-color r g b) => nil
 
-    �w�肳�ꂽ�F�𓧉ߐF�ɐݒ肵�܂��B
+    指定された色を透過色に設定します。
 
-    �F�� 0 ���� 255 �� RGB �l�̃��X�g�Ŏw�肵�܂��B
-    ���ߐF�̉����� (layered-window-set-opaque) �����s���܂��B
+    色は 0 から 255 の RGB 値のリストで指定します。
+    透過色の解除は (layered-window-set-opaque) を実行します。
 
     ex)
-        ;; ���𓧉ߐF�ɐݒ�
+        ;; 白を透過色に設定
         (layered-window-set-transparency-color 255 255 255)
 
 --- layered-window-set-transparency-color-bgr
@@ -218,17 +218,17 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (layered-window-set-transparency-color-bgr bgr) => nil
 
-    �w�肳�ꂽ�F�𓧉ߐF�ɐݒ肵�܂��B
+    指定された色を透過色に設定します。
 
-    �F�͕����� (BGR) �Ŏw�肵�܂��B
-    ��s���� 0 �͏ȗ��ł��A������̐擪�� "#" �� "#x" ��������܂��B
+    色は文字列 (BGR) で指定します。
+    先行する 0 は省略でき、文字列の先頭の "#" や "#x" 無視されます。
 
-    �� xyzzy.ini �� backColor �����̂܂܎w��ł��܂��B
+    → xyzzy.ini の backColor をそのまま指定できます。
 
     ex)
-        ;; �Ԃ𓧉ߐF�ɐݒ� "FF" -> "0000FF"
+        ;; 赤を透過色に設定 "FF" -> "0000FF"
         (layered-window-set-transparency-color "FF")
-        ;; �𓧉ߐF�ɐݒ� (# �Ȃǂ͖��������)
+        ;; 青を透過色に設定 (# などは無視される)
         (layered-window-set-transparency-color "#FF0000")
 
 --- layered-window-set-opaque
@@ -236,17 +236,17 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (layered-window-set-opaque) => nil
 
-    xyzzy �̃E�B���h�E�����S�ɕs�����ɂ��܂��B
+    xyzzy のウィンドウを完全に不透明にします。
 
-    ���S�ɕs�����ɂ����ꍇ�A�ēx����������Ƃ��ɉ�ʂ�������܂��B
-    ����������ɂ͑���� (layered-window-set-opacity 100) �𗘗p���Ă��������B
+    完全に不透明にした場合、再度透明化するときに画面がちらつきます。
+    これを避けるには代わりに (layered-window-set-opacity 100) を利用してください。
 
 --- toggle-layered-window
 
     call-seq:
       (toggle-layered-window) => nil
 
-    xyzzy �E�B���h�E�̓����E�s������؂�ւ��܂��B
+    xyzzy ウィンドウの透明・不透明を切り替えます。
 
 
 === FUNCTION
@@ -258,49 +258,49 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (set-layered-window-attributes/alpha hwnd alpha) => nil
 
-    hwnd �Ŏw�肳�ꂽ window ���w�肳�ꂽ���l�Ŕ������ɐݒ肵�܂��B
+    hwnd で指定された window を指定されたα値で半透明に設定します。
 
 --- set-layered-window-attributes/color
 
     call-seq:
       (set-layered-window-attributes/alpha hwnd '(r g b)) => nil
 
-    hwnd �Ŏw�肳�ꂽ window �̎w�肳�ꂽ�F�𓧉ߐF�ɐݒ肵�܂��B
+    hwnd で指定された window の指定された色を透過色に設定します。
 
 --- get-layered-window-attributes/alpha
 
     call-seq:
-      (get-layered-window-attributes/alpha hwnd) => ���l or nil
+      (get-layered-window-attributes/alpha hwnd) => α値 or nil
 
-    hwnd �Ŏw�肳�ꂽ window �̃��l��Ԃ��܂��B
+    hwnd で指定された window のα値を返します。
 
-    ������������Ă��Ȃ��ꍇ�� nil ��Ԃ��܂��B
+    半透明化されていない場合は nil を返します。
 
 --- get-layered-window-attributes/color
 
     call-seq:
       (get-layered-window-attributes/color hwnd) => (r g b) or nil
 
-    hwnd �Ŏw�肳�ꂽ window �̓��ߐF�� RGB �̃��X�g�ŕԂ��܂��B
+    hwnd で指定された window の透過色を RGB のリストで返します。
 
-    ������������Ă��Ȃ��ꍇ�� nil ��Ԃ��܂��B
+    半透明化されていない場合は nil を返します。
 
 --- set-window-ex-layered
 
     call-seq:
       (set-window-ex-layered hwnd flag) => nil
 
-    hwnd �Ŏw�肳�ꂽ window �� WS_EX_LAYERED �t���O��ݒ肵�܂��B
+    hwnd で指定された window の WS_EX_LAYERED フラグを設定します。
 
-    * flag �� non-nil �Ȃ� window �� layered window �ɐݒ肵�܂��B
-    * flag �� nil �Ȃ� layered window ���������܂��B
+    * flag が non-nil なら window を layered window に設定します。
+    * flag が nil なら layered window を解除します。
 
 --- window-ex-layered-p
 
     call-seq:
       (window-ex-layered-p hwnd) => t or nil
 
-    hwnd �Ŏw�肳�ꂽ window �� layered window �Ȃ� t ��Ԃ��܂��B
+    hwnd で指定された window が layered window なら t を返します。
 
 
 --- alpha->opacity
@@ -308,101 +308,101 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
     call-seq:
       (alpha->opacity alpha) => opacity
 
-    �w�肳�ꂽ���l (0-255) ��s�����x (0-100) �ɕϊ����܂��B
+    指定されたα値 (0-255) を不透明度 (0-100) に変換します。
 
 --- opacity->alpha
 
     call-seq:
       (opacity->alpha opacity) => alpha
 
-    �w�肳�ꂽ�s�����x (0-100) �����l (0-255) �ɕϊ����܂��B
+    指定された不透明度 (0-100) をα値 (0-255) に変換します。
 
 --- color->rgb
 
     call-seq:
       (color->rgb '(r g b)) => rgb (DWORD)
 
-    �w�肳�ꂽ RGB �̃��X�g�� RGB �l (DWORD) �ɕϊ����܂��B
-    RGB �̃��X�g�̊e�l�� 0-255 �ł��Ă����Ă��������B
+    指定された RGB のリストを RGB 値 (DWORD) に変換します。
+    RGB のリストの各値は 0-255 でしていしてください。
 
 --- rgb->color
 
     call-seq:
       (rgb->color rgb) => (r g b)
 
-    �w�肳�ꂽ RGB �l (DWORD) �� RGB �̃��X�g�ɕϊ����܂��B
+    指定された RGB 値 (DWORD) を RGB のリストに変換します。
 
 --- coerce-to-color
 
     call-seq:
       (coerce-to-color rgb-or-list) => rgb
 
-    �w�肳�ꂽ�l�� RGB �l (DWORD) �ɕϊ����܂��B
+    指定された値を RGB 値 (DWORD) に変換します。
 
-    * RGB �̃��X�g�Ȃ� RGB �l (DWORD) �ɕϊ����܂��B
-    * integer �Ȃ炻�̂܂ܕԂ��܂��B
-    * ����ȊO�Ȃ� type-error ���X���[���܂��B
+    * RGB のリストなら RGB 値 (DWORD) に変換します。
+    * integer ならそのまま返します。
+    * それ以外なら type-error をスローします。
 
 --- layered-window-api-version
 
     call-seq:
       (layered-window-api-version) => 1
 
-    layered-window.api �p�b�P�[�W�̃o�[�W������Ԃ��܂��B
+    layered-window.api パッケージのバージョンを返します。
 
-    �o�[�W�����͒P���Ȑ��l�ł��B
+    バージョンは単純な数値です。
 
-    layered-window.api �p�b�P�[�W�Œ�`���Ă��� API �ɒǉ��E�ύX���������ꍇ��
-    �C���N�������g���܂��B
+    layered-window.api パッケージで定義している API に追加・変更があった場合に
+    インクリメントします。
 
 
 ==== layered-window.editor
 
 --- layered-window-get-opacity
-    �E�B���h�E�̕s�����x���擾���܂��B
+    ウィンドウの不透明度を取得します。
 
-    0 �͊��S�ȓ����A100 �͊��S�ȕs�������Ӗ����܂��B
-    ���ߐݒ肵�Ă��Ȃ��ꍇ�� nil ��Ԃ��܂��B
+    0 は完全な透明、100 は完全な不透明を意味します。
+    透過設定していない場合は nil を返します。
 
 --- layered-window-get-alpha
-    �E�B���h�E�̃A���t�@�l���擾���܂��B
+    ウィンドウのアルファ値を取得します。
 
-    0 �͊��S�ȓ����A255 �͊��S�ȕs�������Ӗ����܂��B
-    ���ߐݒ肵�Ă��Ȃ��ꍇ�� nil ��Ԃ��܂��B
+    0 は完全な透明、255 は完全な不透明を意味します。
+    透過設定していない場合は nil を返します。
 
 --- layered-window-get-transparency-color
-    �ݒ肳��Ă��铧�ߐF���擾���܂��B
+    設定されている透過色を取得します。
 
-    ���ߐF�� 0 ���� 255 �� RGB �l�̃��X�g�ł� '(R G B)�B
+    透過色は 0 から 255 の RGB 値のリストです '(R G B)。
 
 --- layered-window-p
-    �E�B���h�E������������Ă���Ȃ� ((|non-nil|)) ��Ԃ��܂��B
-    �s�����x 100% �œ��߂��Ă���ꍇ�� ((|t|)) ��Ԃ��܂��B
+    ウィンドウが透明化されているなら ((|non-nil|)) を返します。
+    不透明度 100% で透過している場合も ((|t|)) を返します。
 
 --- layered-window-version
 
     call-seq:
       (layered-window-version) => 1.0.1
 
-    �{�p�b�P�[�W�̃o�[�W������Ԃ��܂��B
+    本パッケージのバージョンを返します。
 
-    �o�[�W������ major.minor.teeny �Ƃ����`���ł��B
-    ���ꂼ��̔ԍ��͕K�� 1 ���ɂ���̂ŁA�ȉ��̂悤�ɔ�r���邱�Ƃ��ł��܂�
-    (Ruby �Ɠ����ł� :-)�B
+    バージョンは major.minor.teeny という形式です。
+    それぞれの番号は必ず 1 桁にするので、以下のように比較することができます
+    (Ruby と同じです :-)。
 
         (if (string<= "1.1.0" (layered-window-version))
-            (1.1.0 �ȍ~�ŗL���ȏ���)
-          (1.1.0 ���O�̃o�[�W�����ł̏���))
+            (1.1.0 以降で有効な処理)
+          (1.1.0 より前のバージョンでの処理))
 
 
 == SAMPLE
 
-�L�[�̐ݒ��ƃT���v���X�N���v�g�ł��B
+キーの設定例とサンプルスクリプトです。
 
-    ;; Ctrl+F12 �œ�������؂�ւ�
+    ;; Ctrl+F12 で透明化を切り替え
     (global-set-key #\C-F12 'toggle-layered-window)
 
-    ;; xyzzy �I�����Ƀt�F�[�h�A�E�g����
+    ;; xyzzy 終了時にフェードアウトする
     (add-hook '*kill-xyzzy-hook*
               #'(lambda ()
                   (do ((n 100 (- n 10)))
@@ -410,7 +410,7 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
                     (layered-window-set-opacity n)
                     (sit-for 0.05))))
 
-    ;; ��A�N�e�B�u�ȂƂ��͔������ɂ���
+    ;; 非アクティブなときは半透明にする
     (add-hook '*deactivate-hook*
               #'(lambda ()
                   (layered-window-set-opacity 50)))
@@ -418,7 +418,7 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
               #'(lambda ()
                   (layered-window-set-opaque)))
 
-    ;; �������Ȃ��Ƃǂ�ǂ񓧖��ɂȂ��Ă����E�E�E (�d������)
+    ;; 何もしないとどんどん透明になっていく・・・ (重いかも)
     (let ((alpha 255))
       (add-hook '*post-command-hook*
                 #'(lambda (&optional ignore)
@@ -426,17 +426,17 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
       (start-timer 1
                    #'(lambda ()
                        (decf alpha)
-                       (if (< 10 alpha) ; �������炢�c����
+                       (if (< 10 alpha) ; 少しぐらい残そう
                            (layered-window-set-alpha alpha)))))
 
-    ;; libini ���g���Ĕw�i�F���擾���ē��߂���
+    ;; libini を使って背景色を取得して透過する
     (require "libini/libini")
     (defun set-transparency-bgcolor ()
       (let ((ini (libini:ini-to-list (merge-pathnames "xyzzy.ini" (user-config-path)))))
         (layered-window-set-transparency-color-bgr
          (cdr (assoc "backColor" (libini:get-section ini "Colors") :test 'string=)))))
 
-    ;; �F�I���_�C�A���O���g���ē��ߐF��ݒ肷��
+    ;; 色選択ダイアログを使って透過色を設定する
     (require "winapi/commdlg")
     (defun choose-transparency-color ()
       (layered-window-set-transparency-color-bgr
@@ -445,18 +445,18 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
 
 == TODO
 
-* �c�[�������ʐݒ�̂Ƃ���ɉ��������B
+* ツール→共通設定のところに何かを作る。
 
 
 == KNOWN BUGS
 
-* toggle-layered-window �͑O��̓����x�Ȃǂ𖳎����A��� ((< *layered-window-default-opacity* >)) �̐ݒ�𗘗p����
-* layered-window.api �̃h�L�������g���Ȃ�
+* toggle-layered-window は前回の透明度などを無視し、常に ((< *layered-window-default-opacity* >)) の設定を利用する
+* layered-window.api のドキュメントがない
 
 
 == AUTHOR
 
-�݂�ނ� ���䂫 (((<URL:mailto:miyamuko (at) gmail.com>)))
+みやむこ かつゆき (((<URL:mailto:miyamuko (at) gmail.com>)))
 
 
 == SEE ALSO
@@ -464,7 +464,7 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
 : api.l
     ((<URL:http://xyzzy.s53.xrea.com/wiki/index.php?%B3%C8%C4%A5lisp%2Fwinapi>))
 
-: ���C���[�h �E�B���h�E - Windows �A�v���P�[�V�����Ŕ������Ɠ������ʂ��g�p����V������i
+: レイヤード ウィンドウ - Windows アプリケーションで半透明と透明効果を使用する新しい手段
     ((<URL:http://www.microsoft.com/japan/msdn/windows/windows2000/layerwin.asp>))
 
 : SetLayeredWindowAttributes
@@ -476,7 +476,7 @@ layered-window �͈ȉ��̊֐��� export ���Ă��܂�
 
 == COPYRIGHT
 
-layered-window �� MIT/X ���C�Z���X�ɂ��������ė��p�\�ł��B
+layered-window は MIT/X ライセンスにしたがって利用可能です。
 
 See cairo/docs/MIT-LICENSE for full license.
 
